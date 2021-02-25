@@ -1,0 +1,29 @@
+{
+  "name": "traefik-acme",
+  "author": "malcolm handley (m@redheron.com)",
+  "description": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "preact": "^10.5.12",
+    "regenerator-runtime": "^0.13.7",
+    "tailwindcss": "^1.9.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@hpcc-js/wasm": "0.3.11",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "parcel-bundler": "^1.12.4",
+    "parcel-proxy-server": "^1.1.0",
+    "prettier": "^2.2.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.8",
+    "ws": "^7.4.3"
+  },
+  "scripts": {
+  }
+}

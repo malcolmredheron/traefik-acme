@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "strict": true,
+
+    // Output
+    "module": "commonjs",
+    "target": "es6",
+    "sourceMap": true,
+    // Reduces the code size
+    "importHelpers": true
+  },
+
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

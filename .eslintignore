@@ -1,0 +1,16 @@
+/*
+!/*.json
+!/*.ts
+!/src/
+
+/**/*.css
+/**/*.html
+/**/*.md
+/**/*.pcss
+/**/*.yml
+
+*.crt
+*.env
+*.key
+*.sh
+Dockerfile

@@ -1,0 +1,36 @@
+version: '3.1'
+services:
+  parcel:
+    build:
+      context: .
+      dockerfile: src/server/parcel/Dockerfile
+    volumes:
+      - ./src:/fable/src:ro
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.parcel.entrypoints=websecure
+      - traefik.http.routers.parcel.rule=PathPrefix(`/`)
+      - traefik.http.routers.parcel.tls.certresolver=lets-encrypt
+      - traefik.http.routers.parcel.tls.domains[0].main=${serviceHostname}
+      - traefik.http.routers.parcel.service=parcel
+      - traefik.http.services.parcel.loadbalancer.server.port=80
+
+      - traefik.http.routers.parcel-hmr.entrypoints=parcel-hmr
+      - traefik.http.routers.parcel-hmr.rule=PathPrefix(`/`)
+      - traefik.http.routers.parcel-hmr.tls.certresolver=lets-encrypt
+      - traefik.http.routers.parcel-hmr.tls.domains[0].main=${serviceHostname}
+      - traefik.http.routers.parcel-hmr.service=parcel-hmr
+      - traefik.http.services.parcel-hmr.loadbalancer.server.port=81
+
+  traefik:
+    image: traefik:2.4.5
+    restart: always
+    ports:
+      - '81:81' # parcel-hmr (hot module reloading)
+      - '8080:8080' # traefik dashboard
+      - '443:443' # real traffic
+    volumes:
+      - ./src/server/traefik-${clusterType}:/etc/traefik:ro
+      - ./data/server/traefik:/data/traefik:rw
+      - /var/run/docker.sock:/var/run/docker.sock:ro
